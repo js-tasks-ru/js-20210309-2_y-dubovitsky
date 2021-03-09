@@ -5,5 +5,13 @@
  * @returns {object} - returns the new object
  */
 export const omit = (obj, ...fields) => {
+    let result = {};
+    result = Object.fromEntries(
+        Object.entries(obj)
+            .filter(
+                ([key, value]) => !fields.includes(key) ? [key, value] : null
+            )
+    );
 
+    return result;
 };
