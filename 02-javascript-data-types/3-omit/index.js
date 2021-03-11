@@ -12,6 +12,5 @@ export const omit = (obj, ...fields) => {
                 ([key, value]) => !fields.includes(key) ? [key, value] : null
             )
     );
-
     return result;
 };
