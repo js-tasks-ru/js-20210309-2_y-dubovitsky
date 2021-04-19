@@ -89,7 +89,7 @@ export default class ColumnChart {
 
   get template() {
     return `
-      <div class="column-chart column-chart_loading" style="--chart-height: ${this.chartHeight}">
+      <div class="column-chart column-chart_loading dashboard__chart_${this.label}" style="--chart-height: ${this.chartHeight}">
         <div class="column-chart__title">
           Total ${this.label}
           ${this.getLink()}
