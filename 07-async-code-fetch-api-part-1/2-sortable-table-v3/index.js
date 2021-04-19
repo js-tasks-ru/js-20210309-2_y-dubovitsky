@@ -22,7 +22,6 @@ export default class SortableTable {
     }
 
     this.render();
-    this.initEventListeners();
   }
 
   getUrl(params) {
@@ -77,11 +76,11 @@ export default class SortableTable {
             <div class="sortable-table__cell" data-id="${id}" data-name="${title}" data-sortable="${sortable}" data-order="asc">
             <span>${title}</span>
             ${sortable ?
-          `<span data-element="arrow" class="sortable-table__sort-arrow">
+        `<span data-element="arrow" class="sortable-table__sort-arrow">
                 <span class="sort-arrow"></span>
               </span>`
-          : ''
-        }
+        : ''
+      }
             </div>
             `
     }
@@ -122,13 +121,16 @@ export default class SortableTable {
     `
   }
 
-  render() {
+  async render() {
     const tempWrapper = document.createElement('div');
     tempWrapper.innerHTML = this.getTemplate();
     this.element = tempWrapper.firstElementChild;
 
     this.subElements = this.getSubElements(this.element);
-    this.update();
+
+    await this.update();
+
+    this.initEventListeners();
   }
 
   // Event Listeners
@@ -256,4 +258,3 @@ export default class SortableTable {
     return result;
   }
 }
-

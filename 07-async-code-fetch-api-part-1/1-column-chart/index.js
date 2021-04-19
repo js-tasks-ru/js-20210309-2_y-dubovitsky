@@ -40,12 +40,12 @@ export default class ColumnChart {
         this.updateColumnChart(loadedData);
     }
 
-    update(start, end) {
+    async update(start, end) {
         this.range = {
             from: start,
             to: end
         }
-        this.loadData();
+        await this.loadData();
     }
 
     updateColumnChart = (newData) => {
